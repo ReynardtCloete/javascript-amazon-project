@@ -31,9 +31,13 @@ const products = [{
     priceCents: 799
 }];
 
+//Accumulator function//
+let productHTML = ''; 
+
 //2.Generate HTML//
 products.forEach((product) => {
-    const html = `
+
+    productHTML += `
         <div class="product-container">
 
           <div class="product-image-container">
@@ -54,7 +58,7 @@ products.forEach((product) => {
           </div>
 
           <div class="product-price">
-            $${product.priceCents / 100} 
+            $${(product.priceCents / 100).toFixed(2)} 
           </div>
 
           <div class="product-quantity-container">
@@ -84,5 +88,7 @@ products.forEach((product) => {
           </button>
         </div>
     `;
-    console.log(html);
-})
+
+});
+
+document.querySelector('.js-product-grid').innerHTML = productHTML;
