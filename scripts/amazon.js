@@ -1,3 +1,4 @@
+import {cart} from '../data/cart.js'; //After export in cart.js we import the variable here. .. also means to go out of scipt folder and then into data//
 
 //Accumulator function//
 let productHTML = ''; 
