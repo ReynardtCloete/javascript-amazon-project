@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js'; 
+import {cart, addToCart} from '../data/cart.js'; 
 import { products } from '../data/products.js';
 
 //Accumulator function//
@@ -64,37 +64,23 @@ products.forEach((product) => {
 //Generate HTML//
 document.querySelector('.js-product-grid').innerHTML = productHTML;
 
+//This function updates the webpage so we're keeping it here and not moving it to cart.js//
+///////////////////////////////
+function updateCartQuantity() {
+  let cartQuantity = 0;
 
-//Add to cart button and function//
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
+
+  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+}
+
+//////////////////////////////////////////////////////////////////
 document.querySelectorAll('.js-add-to-cart').forEach((button) => { 
-
   button.addEventListener('click', () => {
     const productId = button.dataset.productId; //productId is the "product-id" above, put into a variable//
-
-    let matchingItem; 
-
-    cart.forEach((item) => {
-      if (productId === item.productId) {
-        matchingItem = item; //Basically just put 'item' into variable 'matchingItem', which is just another name pointing to same object//
-      }
-    });
-
-    if (matchingItem) {
-      matchingItem.quantity += 1; 
-    } else {
-      cart.push({
-        productId: productId,
-        quantity: 1
-      });
-    }
-
-    //Calculate cart quantity
-    let cartQuantity = 0;
-
-    cart.forEach((item) => {
-      cartQuantity += item.quantity;
-    });
-
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+    addToCart(productId);
+    updateCartQuantity();
   });
 });
