@@ -7,14 +7,14 @@ export const cart = [{ //No need to save all the info for a product here and in 
   quantity: 1
 }]; 
 
-///////////////////////////////
+//////////////////////////////////////
 export function addToCart(productId) {
 
   let matchingItem; 
 
   cart.forEach((cartItem) => {
     if (productId === cartItem.productId) {
-      matchingItem = cartItem; //Basically just put 'item' into variable 'matchingItem', which is just another name pointing to same object//
+      matchingItem = cartItem; //Basically just put 'cartItem' into variable 'matchingItem', which is just another name pointing to same object//
     }
   });
 

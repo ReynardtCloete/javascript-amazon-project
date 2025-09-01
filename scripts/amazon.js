@@ -1,34 +1,34 @@
-import { cart, addToCart } from '../data/cart.js'; 
-import { products } from '../data/products.js';
+import {cart, addToCart} from '../data/cart.js'; 
+import {products} from '../data/products.js';
 
 //Accumulator function//
 let productHTML = ''; 
 
-//2.Generate HTML//
-products.forEach((product) => {
+//Generate HTML//
+products.forEach((productItem) => {
 
     productHTML += `
         <div class="product-container">
 
           <div class="product-image-container">
             <img class="product-image"
-              src=${product.image}>
+              src=${productItem.image}>
           </div>
 
           <div class="product-name limit-text-to-2-lines">
-            ${product.name}
+            ${productItem.name}
           </div>
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${product.rating.stars * 10}.png"> 
+              src="images/ratings/rating-${productItem.rating.stars * 10}.png"> 
             <div class="product-rating-count link-primary">
-              ${product.rating.count}
+              ${productItem.rating.count}
             </div>
           </div>
 
           <div class="product-price">
-            $${(product.priceCents / 100).toFixed(2)} 
+            $${(productItem.priceCents / 100).toFixed(2)} 
           </div>
 
           <div class="product-quantity-container">
@@ -53,7 +53,7 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${product.id}">
+          <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${productItem.id}">
             Add to Cart
           </button>
         </div>
@@ -79,7 +79,7 @@ function updateCartQuantity() {
 //////////////////////////////////////////////////////////////////
 document.querySelectorAll('.js-add-to-cart').forEach((button) => { 
   button.addEventListener('click', () => {
-    const productId = button.dataset.productId; //productId is the "product-id" above, put into a variable//
+    const productId = button.dataset.productId; 
     addToCart(productId);
     updateCartQuantity();
   });
