@@ -1,5 +1,6 @@
 import {cart, addToCart} from '../data/cart.js'; 
 import {products} from '../data/products.js';
+import {formatCurrency} from './utils/money.js';
 
 //Accumulator function//
 let productHTML = ''; 
@@ -26,7 +27,7 @@ products.forEach((productItem) => {
       </div>
     </di
     <div class="product-price">
-      $${(productItem.priceCents / 100).toFixed(2)} 
+      $${formatCurrency(productItem.priceCents)} 
     </di
     <div class="product-quantity-container">
       <select>
