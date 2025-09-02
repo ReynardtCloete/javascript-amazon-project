@@ -7,7 +7,7 @@ export const cart = [{ //No need to save all the info for a product here and in 
   quantity: 1
 }]; 
 
-//Add To Cart/////////////////////////
+//Add To Cart Function////////////////
 export function addToCart(productId) {
 
   let matchingItem; 
@@ -26,4 +26,9 @@ export function addToCart(productId) {
       quantity: 1
     });
   }
+}
+
+//Remove From Cart Function//
+function removeFromCart(productId) {
+
 }
