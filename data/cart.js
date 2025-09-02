@@ -1,4 +1,4 @@
-//////////////////////
+//My Cart/////////////
 export const cart = [{ //No need to save all the info for a product here and in the product.js, we only need the id, and then search//
   productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
   quantity: 2
@@ -7,7 +7,7 @@ export const cart = [{ //No need to save all the info for a product here and in 
   quantity: 1
 }]; 
 
-//////////////////////////////////////
+//Add To Cart/////////////////////////
 export function addToCart(productId) {
 
   let matchingItem; 

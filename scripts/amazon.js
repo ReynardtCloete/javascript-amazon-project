@@ -51,7 +51,7 @@ products.forEach((productItem) => {
       Add to Cart
     </button>
   </div>
-  
+
   `;
 
 });
@@ -60,7 +60,7 @@ products.forEach((productItem) => {
 document.querySelector('.js-product-grid').innerHTML = productHTML;
 
 //This function updates the webpage so we're keeping it here and not moving it to cart.js//
-///////////////////////////////
+//Update Cart Quantity/////////
 function updateCartQuantity() {
   let cartQuantity = 0;
 
@@ -69,9 +69,9 @@ function updateCartQuantity() {
   });
 
   document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-}
+};
 
-//////////////////////////////////////////////////////////////////
+//Add to Cart Button Click////////////////////////////////////////
 document.querySelectorAll('.js-add-to-cart').forEach((button) => { 
   button.addEventListener('click', () => {
     const productId = button.dataset.productId; 
