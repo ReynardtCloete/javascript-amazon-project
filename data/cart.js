@@ -1,5 +1,5 @@
 //My Cart/////////////
-export const cart = [{ //No need to save all the info for a product here and in the product.js, we only need the id, and then search//
+export let cart = [{ //No need to save all the info for a product here and in the product.js, we only need the id, and then search//
   productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
   quantity: 2
 }, {
@@ -29,6 +29,14 @@ export function addToCart(productId) {
 }
 
 //Remove From Cart Function//
-function removeFromCart(productId) {
+export function removeFromCart(productId) {
+  const newCart = [];
 
+  cart.forEach((cartItem) => {
+    if (cartItem.productId !== productId) {
+      newCart.push(cartItem);
+    }
+  });
+
+  cart = newCart;
 }
