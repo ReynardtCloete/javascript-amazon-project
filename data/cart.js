@@ -29,7 +29,7 @@ export function addToCart(productId) {
 }
 
 //Remove From Cart Function//
-export function removeFromCart(productId) {
+export function removeFromCart(productId) { //The productId we want to remove, we only push what's not equal to it into newArray.//
   const newCart = [];
 
   cart.forEach((cartItem) => {

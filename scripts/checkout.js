@@ -104,8 +104,11 @@ document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML;
 document.querySelectorAll('.js-delete-link').forEach((link) => {
     link.addEventListener('click', () => {
         const productId = link.dataset.productId;
-        removeFromCart(productId);
+        removeFromCart(productId); //The productId we want to remove.//
 
-        const container = document.querySelector(`.js-cart-item-container-${productId}`);
+        const container = document.querySelector(`.js-cart-item-container-${productId}`); 
+        container.remove();
+        //We're substituting productId into where matchingProductId is.//
+        //Also, we're using backticks because we're adding something.//
     });
 });
