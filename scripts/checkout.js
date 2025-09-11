@@ -18,7 +18,7 @@ cart.forEach((cartItem) => {
             matchingProduct = product; 
         }
     });
-
+    /////////
     const deliveryOptionId = cartItem.deliveryOptionId;
 
     let deliveryOption;
@@ -32,7 +32,7 @@ cart.forEach((cartItem) => {
     const today = dayjs();
     const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
     const dateString = deliveryDate.format('dddd, MMMM D');
-
+    /////////
     cartSummaryHTML += 
     
     `
