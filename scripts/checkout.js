@@ -125,7 +125,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
 
 document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML;
 
-//Delete Cart Item Button///////////////////////////////////////
+//Delete Cart Item Button////////////////////////////////////////////////////////////////
 document.querySelectorAll('.js-delete-link').forEach((link) => {
     link.addEventListener('click', () => {
         const productId = link.dataset.productId;
@@ -138,6 +138,7 @@ document.querySelectorAll('.js-delete-link').forEach((link) => {
     });
 });
 
+//Radion Button Click//////////////////////////////////////////////////
 document.querySelectorAll('.js-delivery-option').forEach((element) => {
     element.addEventListener('click', () => {
         const productId = element.dataset.productId;
