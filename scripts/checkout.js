@@ -4,10 +4,6 @@ import {formatCurrency} from './utils/money.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'; //External js library.//
 import {deliveryOptions} from '../data/deliveryOptions.js';
 
-const today = dayjs(); //Represents current date and time.//
-const deliveryDate = today.add(7, 'days');
-deliveryDate.format('dddd, MMMM, D'); //Takes date above and converts it into a string with this format.//
-
 //Cart Summary HTML///////////////////////////////////////////////////////////////
 let cartSummaryHTML = '';
 
