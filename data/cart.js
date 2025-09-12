@@ -1,4 +1,4 @@
-//My Cart/////////////
+//My Cart//
 export let cart = JSON.parse(localStorage.getItem('cart'));
 
 if(!cart) { //If the cart is empty, we just give it a default value.//
@@ -18,7 +18,7 @@ function saveToStorage() {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-//Add To Cart Function////////////////
+//Add To Cart Function//
 export function addToCart(productId) {
 
   let matchingItem; 
@@ -57,7 +57,7 @@ export function removeFromCart(productId) { //The productId we want to remove, w
   saveToStorage(); //Whenever we delete cart item, save to storage.//
 }
 
-//Update Delivery Option////////////////////////////////////
+//Update Delivery Option//
 export function updateDeliveryOption(productId, deliveryOptionId) {
 let matchingItem; 
 

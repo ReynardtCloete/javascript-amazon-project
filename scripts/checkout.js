@@ -4,7 +4,7 @@ import {formatCurrency} from './utils/money.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'; //External js library.//
 import {deliveryOptions} from '../data/deliveryOptions.js';
 
-//Cart Summary HTML///////////////////////////////////////////////////////////////
+//Cart Summary HTML//
 let cartSummaryHTML = '';
 
 cart.forEach((cartItem) => {
@@ -77,7 +77,7 @@ cart.forEach((cartItem) => {
     `
 });
 
-//Delivery Options HTML/////////////////////////////////////////////////////
+//Delivery Options HTML//
 function deliveryOptionsHTML(matchingProduct, cartItem) {
     let HTML = '';
 
@@ -125,7 +125,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
 
 document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML;
 
-//Delete Cart Item Button////////////////////////////////////////////////////////////////
+//Delete Cart Item Button//
 document.querySelectorAll('.js-delete-link').forEach((link) => {
     link.addEventListener('click', () => {
         const productId = link.dataset.productId;
@@ -138,7 +138,7 @@ document.querySelectorAll('.js-delete-link').forEach((link) => {
     });
 });
 
-//Radion Button Click//////////////////////////////////////////////////
+//Radio Button Click//
 document.querySelectorAll('.js-delivery-option').forEach((element) => {
     element.addEventListener('click', () => {
         const productId = element.dataset.productId;
