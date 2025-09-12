@@ -50,7 +50,7 @@ products.forEach((productItem) => {
     </div>
 
     <div class="product-spacer"></div>
-    
+
     <div class="added-to-cart">
       <img src="images/icons/checkmark.png">
       Added
@@ -64,12 +64,9 @@ products.forEach((productItem) => {
   `;
 
 });
-
-//Generate HTML//
 document.querySelector('.js-product-grid').innerHTML = productHTML;
 
-//This function updates the webpage so we're keeping it here and not moving it to cart.js//
-//Update Cart Quantity/////////
+//Update Cart Quantity Function//
 function updateCartQuantity() {
   let cartQuantity = 0;
 
@@ -80,7 +77,7 @@ function updateCartQuantity() {
   document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 };
 
-//Add to Cart Button Click////////////////////////////////////////
+//Add to Cart Button Click//
 document.querySelectorAll('.js-add-to-cart').forEach((button) => { 
   button.addEventListener('click', () => {
     const productId = button.dataset.productId; 

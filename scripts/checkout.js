@@ -18,7 +18,8 @@ cart.forEach((cartItem) => {
             matchingProduct = product; 
         }
     });
-    /////////
+
+    ////////////////////////////////////////////////////////////////////
     const deliveryOptionId = cartItem.deliveryOptionId;
 
     let deliveryOption;
@@ -32,9 +33,9 @@ cart.forEach((cartItem) => {
     const today = dayjs();
     const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
     const dateString = deliveryDate.format('dddd, MMMM D');
-    /////////
+    ///////////////////////////////////////////////////////////////////
+
     cartSummaryHTML += 
-    
     `
     <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
         <div class="delivery-date">
@@ -42,36 +43,45 @@ cart.forEach((cartItem) => {
         </div>
 
         <div class="cart-item-details-grid">
-            <img class="product-image"
-            src="${matchingProduct.image}">
+            <img class="product-image" src="${matchingProduct.image}">
 
             <div class="cart-item-details">
-            <div class="product-name">
-                ${matchingProduct.name}
-            </div>
-            <div class="product-price">
-                $${formatCurrency(matchingProduct.priceCents)}
-            </div>
-            <div class="product-quantity">
-                <span>
-                Quantity: <span class="quantity-label">${cartItem.quantity}</span>
-                </span>
-                <span class="update-quantity-link link-primary">
-                Update
-                </span>
-                <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProduct.id}">
-                Delete
-                </span> 
-            </div>
+
+                <div class="product-name">
+                    ${matchingProduct.name}
+                </div>
+
+                <div class="product-price">
+                    $${formatCurrency(matchingProduct.priceCents)}
+                </div>
+
+                <div class="product-quantity">
+                    <span>
+                        Quantity: <span class="quantity-label">${cartItem.quantity}</span>
+                    </span>
+
+                    <span class="update-quantity-link link-primary">
+                        Update
+                    </span>
+
+                    <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProduct.id}">
+                        Delete
+                    </span> 
+                </div>
+
             </div>
 
             <div class="delivery-options">
+
                 <div class="delivery-options-title">
                     Choose a delivery option:
                 </div>
                 ${deliveryOptionsHTML(matchingProduct, cartItem)}
+
             </div>
+
         </div>
+
     </div>
          
     `
@@ -79,6 +89,7 @@ cart.forEach((cartItem) => {
 
 //Delivery Options HTML//
 function deliveryOptionsHTML(matchingProduct, cartItem) {
+
     let HTML = '';
 
     deliveryOptions.forEach((deliveryOption) => {
@@ -93,10 +104,12 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
 
         const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
-        HTML += `
+        HTML += 
+        `
         <div class="delivery-option js-delivery-option" 
         data-product-id="${matchingProduct.id}"
         data-delivery-option-id="${deliveryOption.id}">
+
             <input 
               type="radio" 
               ${isChecked ? 'checked' :''}
@@ -115,6 +128,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
                 </div>
 
             </div>
+
         </div>
         
         `
@@ -129,16 +143,14 @@ document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML;
 document.querySelectorAll('.js-delete-link').forEach((link) => {
     link.addEventListener('click', () => {
         const productId = link.dataset.productId;
-        removeFromCart(productId); //The productId we want to remove.//
-
+        removeFromCart(productId); 
+        //We still need to delete it here from the UI, even though it's deleted on data side.//
         const container = document.querySelector(`.js-cart-item-container-${productId}`); 
-        container.remove();
-        //We're substituting productId into where matchingProductId is.//
-        //Also, we're using backticks because we're adding something.//
+        container.remove(); 
     });
 });
 
-//Radio Button Click//
+//Radio Button//
 document.querySelectorAll('.js-delivery-option').forEach((element) => {
     element.addEventListener('click', () => {
         const productId = element.dataset.productId;

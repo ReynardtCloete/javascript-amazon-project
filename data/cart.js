@@ -1,8 +1,8 @@
 //My Cart//
 export let cart = JSON.parse(localStorage.getItem('cart'));
 
-if(!cart) { //If the cart is empty, we just give it a default value.//
-  cart = [{ //No need to save all the info for a product here and in the product.js, we only need the id, and then search//
+if(!cart) { 
+  cart = [{ 
     productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
     quantity: 2,
     deliveryOptionId: '1'
@@ -13,7 +13,7 @@ if(!cart) { //If the cart is empty, we just give it a default value.//
   }]; 
 }
 
-//Cart Local Storage - Because cart is a variable, the page resets when you refresh.//
+//Cart Local Storage Function//
 function saveToStorage() {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
@@ -39,11 +39,11 @@ export function addToCart(productId) {
     });
   }
 
-  saveToStorage(); //Whenever we update cart, save to storage.//
+  saveToStorage(); 
 }
 
 //Remove From Cart Function//
-export function removeFromCart(productId) { //The productId we want to remove, we only push what's not equal to it into newArray.//
+export function removeFromCart(productId) { 
   const newCart = [];
 
   cart.forEach((cartItem) => {
@@ -54,10 +54,10 @@ export function removeFromCart(productId) { //The productId we want to remove, w
 
   cart = newCart;
 
-  saveToStorage(); //Whenever we delete cart item, save to storage.//
+  saveToStorage(); 
 }
 
-//Update Delivery Option//
+//Update Delivery Option Function//
 export function updateDeliveryOption(productId, deliveryOptionId) {
 let matchingItem; 
 
