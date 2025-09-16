@@ -19,7 +19,7 @@ cart.forEach((cartItem) => {
         }
     });
 
-    ////////////////////////////////////////////////////////////////////
+    //Insert Date///////////////////////////////////////////////////////
     const deliveryOptionId = cartItem.deliveryOptionId;
 
     let deliveryOption;
@@ -92,7 +92,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
 
     let HTML = '';
 
-    deliveryOptions.forEach((deliveryOption) => {
+    deliveryOptions.forEach((deliveryOption) => { 
 
         const today = dayjs();
         const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
@@ -105,6 +105,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
         const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
         HTML += 
+
         `
         <div class="delivery-option js-delivery-option" 
         data-product-id="${matchingProduct.id}"
