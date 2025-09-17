@@ -36,6 +36,7 @@ cart.forEach((cartItem) => {
     ///////////////////////////////////////////////////////////////////
 
     cartSummaryHTML += 
+
     `
     <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
         <div class="delivery-date">
@@ -157,6 +158,6 @@ document.querySelectorAll('.js-delivery-option').forEach((element) => {
         const productId = element.dataset.productId;
         const deliveryOptionId = element.dataset.deliveryOptionId;
         updateDeliveryOption(productId, deliveryOptionId);
-    })
-})
+    });
+});
 
