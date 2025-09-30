@@ -3,6 +3,7 @@ import {products, getProduct} from '../../data/products.js';
 import {formatCurrency} from '../utils/money.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'; //External js library.//
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
+import {renderPaymentSummary} from './paymentSummary.js';
 
 //Cart Summary HTML//
 export function renderOrderSummary () {
@@ -134,9 +135,12 @@ export function renderOrderSummary () {
         link.addEventListener('click', () => {
             const productId = link.dataset.productId;
             removeFromCart(productId); 
+            
             //We still need to delete it here from the UI, even though it's deleted on data side.//
             const container = document.querySelector(`.js-cart-item-container-${productId}`); 
             container.remove(); 
+
+            renderPaymentSummary();
         });
     });
 
@@ -147,6 +151,7 @@ export function renderOrderSummary () {
             const deliveryOptionId = element.dataset.deliveryOptionId;
             updateDeliveryOption(productId, deliveryOptionId);
             renderOrderSummary(); //Runs everything again so date on top is updated as well.//
+            renderPaymentSummary();
         });
     });
 }
