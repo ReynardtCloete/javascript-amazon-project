@@ -6,7 +6,7 @@ loadFromStorage();
 //Load From Storage Function// 
 export function loadFromStorage() {
 
-  cart = JSON.parse(localStorage.getItem('cart'));
+  cart = JSON.parse(localStorage.getItem('cart')); 
 
   if(!cart) { 
     cart = [{ 
