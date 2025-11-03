@@ -1,90 +1,89 @@
-function Cart (localStorageKey) { 
+//Classes are object generators//
+class Cart { 
 
-    const cart = {
+  cartItems;
+  localStorageKey;
 
-        cartItems: undefined,
+  //After object is created, it runs the code in the constructor//
+  constructor(localStorageKey) { 
+    this.localStorageKey = localStorageKey;
+    this.loadFromStorage();
+  }
 
-        loadFromStorage() {
-          this.cartItems = JSON.parse(localStorage.getItem('localStorageKey'));
+  loadFromStorage() {
+    this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
 
-          if (!this.cartItems) {
-            this.cartItems = [{
-              productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
-              quantity: 2,
-              deliveryOptionId: '1'
-            }, {
-              productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
-              quantity: 1,
-              deliveryOptionId: '2'
-            }]; 
-          }
+    if (!this.cartItems) {
+      this.cartItems = [{
+        productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
+        quantity: 2,
+        deliveryOptionId: '1'
+      }, {
+        productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
+        quantity: 1,
+        deliveryOptionId: '2'
+      }]; 
+    }
+  }
 
-        },
+  saveToStorage() {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+  } 
 
-        saveToStorage() {
-          localStorage.setItem('localStorageKey', JSON.stringify(this.cartItems));
-        },
+  addToCart(productId) {
+    let matchingItem; 
 
-        addToCart(productId) {
-          let matchingItem; 
+    this.cartItems.forEach((cartItem) => {
+      if (productId === cartItem.productId) {
+        matchingItem = cartItem; 
+      }
+    });
 
-          this.cartItems.forEach((cartItem) => {
-            if (productId === cartItem.productId) {
-              matchingItem = cartItem; 
-            }
-          });
+    if (matchingItem) {
+      matchingItem.quantity += 1; 
+    } else {
+      this.cartItems.push({
+        productId: productId,
+        quantity: 1,
+        deliveryOptionId: '1'
+      });
+    }
 
-          if (matchingItem) {
-            matchingItem.quantity += 1; 
-          } else {
-            this.cartItems.push({
-              productId: productId,
-              quantity: 1,
-              deliveryOptionId: '1'
-            });
-          }
+    this.saveToStorage(); 
+  }
 
-          this.saveToStorage(); 
-        },
+  removeFromCart(productId) { 
+    const newCart = [];
 
-        removeFromCart(productId) { 
-          const newCart = [];
+    this.cartItems.forEach((cartItem) => {
+      if (cartItem.productId !== productId) {
+        newCart.push(cartItem);
+      }
+    });
 
-          this.cartItems.forEach((cartItem) => {
-            if (cartItem.productId !== productId) {
-              newCart.push(cartItem);
-            }
-          });
+    this.cartItems = newCart;
 
-          this.cartItems = newCart;
+    this.saveToStorage(); 
+  }
 
-          this.saveToStorage(); 
-        },
-
-        updateDeliveryOption(productId, deliveryOptionId) {
+  updateDeliveryOption(productId, deliveryOptionId) {
         
-          let matchingItem; 
+    let matchingItem; 
 
-          cart.forEach((cartItem) => {
-            if (productId === cartItem.productId) {
-              matchingItem = cartItem; 
-            }
-          });
+    cart.forEach((cartItem) => {
+      if (productId === cartItem.productId) {
+        matchingItem = cartItem; 
+      }
+    });
 
-          matchingItem.deliveryOptionId = deliveryOptionId;
+    matchingItem.deliveryOptionId = deliveryOptionId;
 
-          saveToStorage();
-        }
+    saveToStorage();
+  }
 
-    };
-
-  return cart;
 }
 
-const cart = Cart('cart-oop');//Generates an object//
-const businessCart = Cart('cart-business');//Generates an object//
-
-cart.loadFromStorage();
-businessCart.loadFromStorage();
+const cart = new Cart('cart-oop'); //Generates an object//
+const businessCart = new Cart('cart-business'); //Generates an object//
 
 
